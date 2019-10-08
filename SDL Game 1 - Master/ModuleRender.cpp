@@ -42,7 +42,7 @@ update_status ModuleRender::PreUpdate() {
 
 // Called every draw update
 update_status ModuleRender::Update() {	
-	// TODO 5: Now that we have PreUpdate/PostUpdate/Update move things around so we can render :)	
+	// TODO 5: Now that we have PreUpdate/PostUpdate/Update move things around so we can render :)
 	return UPDATE_CONTINUE;
 }
 
