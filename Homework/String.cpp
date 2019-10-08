@@ -9,7 +9,6 @@ String::String(const char* charset) {
 	while (charset[size] != '\0') {
 		size++;
 	}
-
 	buffer = new char[size];
 
 	for (int j = 0; j < size; j++) {
@@ -37,6 +36,7 @@ String String::operator +(String& string) {
 	}
 	newBuffer[newSize - 1] = '\0';
 	String aux(newBuffer);
+	delete newBuffer;
 	return aux;
 }
 

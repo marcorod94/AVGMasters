@@ -1,4 +1,4 @@
-#include "Vector3D.cpp"
+#include "Vector3D.h"
 #include "String.h"
 #include <iostream>
 int main() {
