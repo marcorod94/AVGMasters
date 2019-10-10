@@ -29,6 +29,8 @@ bool ModuleInput::Init()
 // Called every draw update
 update_status ModuleInput::Update()
 {
+
+	static SDL_Event Events;
 	SDL_PumpEvents();
 
 	keyboard = SDL_GetKeyboardState(NULL);
@@ -37,6 +39,11 @@ update_status ModuleInput::Update()
 		return UPDATE_STOP;
 	}
 
+	while (SDL_PollEvent(&Events)) {
+		if (Events.type == SDL_QUIT) {
+			return UPDATE_STOP;
+		}
+	}
 
 	// TODO 1: Make the application properly close when ESC is pressed (do not use exit())
 
