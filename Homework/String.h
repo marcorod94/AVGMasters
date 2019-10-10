@@ -3,16 +3,20 @@
 #include <ostream>
 class String {
 public:
-	char* buffer;
 	String();
 	String(const char*);
-	String(String&);
-	String operator +(String&);
-	bool operator ==(const char*);
-	int length();
+	String(const String&);
+	String operator +(const String&);
+	bool operator ==(const char*) const;
+	int length() const;
 	void clear();
 private:
-	int size;
-friend std::ostream& operator <<(std::ostream&, String&);
+	char* buffer = nullptr;
+	int size = 0;
+friend std::ostream& operator <<(std::ostream&, const String&);
 };
+
+inline int String::length() const {
+	return size;
+}
 #endif

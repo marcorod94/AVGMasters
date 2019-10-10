@@ -1,37 +1,34 @@
 #include"String.h"
 
-String::String() {
-	clear();
-}
+String::String() {}
 
 String::String(const char* charset) {
-	size = 0;
 	while (charset[size] != '\0') {
-		size++;
+		++size;
 	}
 	buffer = new char[size];
 
-	for (int j = 0; j < size; j++) {
+	for (int j = 0; j < size; ++j) {
 		buffer[j] = charset[j];
 	}
 }
 
-String::String(String& string) {
-	size = string.length();
+String::String(const String& string) {
+	size = string.size;
 	buffer = new char[size];
-	for (int i = 0; i < size; i++) {
+	for (int i = 0; i < size; ++i) {
 		buffer[i] = string.buffer[i];
 	}
 }
 
-String String::operator +(String& string) {
-	int newSize = size + string.length() + 1;
+String String::operator +(const String& string) {
+	int newSize = size + string.size + 1;
 	char* newBuffer = new char[newSize];
-	for (unsigned j = 0; j < size; j++) {
+	for (unsigned j = 0; j < size; ++j) {
 		newBuffer[j] = buffer[j];
 	}
 
-	for (unsigned i = 0; i < string.length(); i++) {
+	for (unsigned i = 0; i < string.size; ++i) {
 		newBuffer[size + i] = string.buffer[i];
 	}
 	newBuffer[newSize - 1] = '\0';
@@ -40,15 +37,15 @@ String String::operator +(String& string) {
 	return aux;
 }
 
-bool String::operator ==(const char* charset) {
+bool String::operator ==(const char* charset) const {
 	String aux(charset);
-	if (size != aux.length())
+	if (size != aux.size)
 	{
 		return false;
 	}
 	else
 	{
-		for (int i = 0; i < aux.length(); i++)
+		for (int i = 0; i < aux.size; ++i)
 		{
 			if (buffer[i] != aux.buffer[i])
 			{
@@ -59,17 +56,14 @@ bool String::operator ==(const char* charset) {
 	return true;
 }
 
-int String::length() {
-	return size;
-}
 void String::clear() {
 	delete buffer;
 	buffer = nullptr;
 	size = 0;
 }
 
-std::ostream& operator <<(std::ostream& os, String& string) {
-	for (int i = 0; i < string.length(); i++)
+std::ostream& operator <<(std::ostream& os, const String& string) {
+	for (int i = 0; i < string.size; ++i)
 	{
 		os << string.buffer[i];
 	}

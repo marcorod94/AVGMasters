@@ -3,14 +3,16 @@
 #include <iostream>
 int main() {
 	// Vetor 3D class
-	Vector3D<int> a;
-	Vector3D<int> b(1, 0, 1);
-	Vector3D<int> c(b);
-	Vector3D<int> d;
+	Vector3D<float> a;
+	Vector3D<float> b(1.0, 0.0, 1.0);
+	Vector3D<float> c(b);
+	Vector3D<float> d;
 	d = c + b;
 	std::cout << "Vetor 3D class:\n";
-	std::cout << "Normal:" << d.Normalize() << std::endl;
+	std::cout << "Vector:" << d.x << ", " << d.y << ", " << d.z << std::endl;
 	std::cout << "Distance:" << d.distance_to(b) << std::endl;
+	d.Normalize();
+	std::cout << "Normal:" << d.x << ", " << d.y << ", " << d.z << std::endl;
 
 	// String Class 
 	String sa("hello");
