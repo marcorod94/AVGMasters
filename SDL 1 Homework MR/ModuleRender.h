@@ -1,4 +1,6 @@
-#pragma once
+#ifndef ModuleRender_h
+#define ModuleRender_h
+
 #include "Module.h"
 #include "Globals.h"
 
@@ -17,9 +19,9 @@ public:
 	update_status Update();
 	update_status PostUpdate();
 	bool CleanUp();
-
 	bool Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section);
 
-public:
-	SDL_Renderer* renderer = NULL;
+	SDL_Renderer* renderer = nullptr;
 };
+
+#endif

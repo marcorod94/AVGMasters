@@ -3,6 +3,7 @@
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
 #include "ModuleScene.h"
+#include "ModuleAudio.h"
 #include "SDL/include/SDL.h"
 
 ModuleScene::ModuleScene() {
@@ -16,13 +17,13 @@ bool ModuleScene::Init() {
 }
 
 update_status ModuleScene::Update() {
-	
-	if (texture == NULL) {
+	if (texture == nullptr) {
 		texture = App->textures->Load("sprites.png");
-		if (texture == NULL) {
+		if (texture == nullptr) {
 			return UPDATE_ERROR;
 		}
 	}
+	App->audio->PlayMusic("beat.wav");
 	SDL_RenderCopy(App->renderer->renderer, texture, NULL, NULL);
 	return UPDATE_CONTINUE;
 }

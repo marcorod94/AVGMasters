@@ -1,4 +1,6 @@
-#pragma once
+#ifndef Globals_h
+#define Globals_h
+
 #include <windows.h>
 #include <stdio.h>
 
@@ -23,3 +25,5 @@ enum update_status
 #define VSYNC true
 #define TITLE "Super Awesome Game"
 #define SPRITE_FILE "sprites.png"
+
+#endif

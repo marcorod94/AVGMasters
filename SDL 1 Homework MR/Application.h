@@ -1,4 +1,5 @@
-#pragma once
+#ifndef Application_h
+#define Application_h
 
 #include<list>
 #include "Globals.h"
@@ -9,6 +10,7 @@ class ModuleWindow;
 class ModuleTextures;
 class ModuleInput;
 class ModuleScene;
+class ModuleAudio;
 
 class Application
 {
@@ -27,6 +29,7 @@ public:
 	ModuleTextures* textures;
 	ModuleInput* input;
 	ModuleScene* scene;
+	ModuleAudio* audio;
 
 private:
 
@@ -35,3 +38,5 @@ private:
 };
 
 extern Application* App;
+
+#endif

@@ -1,4 +1,6 @@
-#pragma once
+#ifndef ModuleTextures_h
+#define ModuleTextures_h
+
 #include<list>
 #include "Module.h"
 #include "Globals.h"
@@ -19,3 +21,5 @@ public:
 private:
 	std::list<SDL_Texture*> textures;
 };
+
+#endif

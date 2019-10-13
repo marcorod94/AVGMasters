@@ -1,4 +1,6 @@
-#pragma once
+#ifndef ModuleInput_h
+#define ModuleInput_h
+
 #include "Module.h"
 #include "Globals.h"
 
@@ -16,5 +18,7 @@ public:
 	bool CleanUp();
 
 private:
-	const Uint8 *keyboard = NULL;
+	const Uint8 *keyboard = nullptr;
 };
+
+#endif

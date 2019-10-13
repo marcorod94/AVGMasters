@@ -13,6 +13,6 @@ public:
 	update_status Update();
 	bool CleanUp();
 private :
-	SDL_Texture* texture = NULL;
+	SDL_Texture* texture = nullptr;
 };
 #endif
