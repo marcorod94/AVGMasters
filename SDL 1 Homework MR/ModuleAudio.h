@@ -1,18 +1,22 @@
 #ifndef ModuleAudio_h
 #define ModuleAudio_h
+
 #include "Module.h"
 #include "Globals.h"
+#define DEFAULT_MUSIC_FADE_TIME 100.0f
+
+typedef struct _Mix_Music Mix_Music;
 class ModuleAudio : public Module
 {
 public:
 
 	ModuleAudio();
 	~ModuleAudio();
-
 	bool Init();
-	update_status Update();
 	bool CleanUp();
+	bool PlayMusic(const char*);
 private:
-	SDL_Texture* texture = NULL;
+	Mix_Music* music = nullptr;
 };
+
 #endif
