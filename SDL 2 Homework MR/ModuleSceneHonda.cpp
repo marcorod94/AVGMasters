@@ -12,34 +12,38 @@
 
 ModuleSceneHonda::ModuleSceneHonda(bool start_enabled) : Module(start_enabled) {
 	ground.x = 8;
-	ground.y = 391;
-	ground.w = 896;
-	ground.h = 72;
+	ground.y = 375;
+	ground.w = 846;
+	ground.h = 66;
 
-	background.x = 72;
-	background.y = 208;
-	background.w = 768;
-	background.h = 176;
+	background.x = 120;
+	background.y = 177;
+	background.w = 617;
+	background.h = 134;
 
-	hotTub.x = 0;
-	hotTub.y = 0;
-	hotTub.w = 0;
-	hotTub.h = 0;
+	roof.x = 91;
+	roof.y = 9;
+	roof.w = 767;
+	roof.h = 49;
 
-	mountain.frames.push_back({ 848, 208, 40, 40 });
-	mountain.frames.push_back({ 848, 256, 40, 40 });
-	mountain.frames.push_back({ 848, 304, 40, 40 });
+	hotTub.x = 314;
+	hotTub.y = 312;
+	hotTub.w = 334;
+	hotTub.h = 58;
+	
+	mountain.frames.push_back({ 222, 61, 223, 108 });
+	mountain.frames.push_back({ 455, 61, 223, 108 });
 	mountain.speed = 0.08f;
 
-	samurai.frames.push_back({ 624, 15, 32, 56 });
-	samurai.frames.push_back({ 624, 80, 32, 56 });
-	samurai.frames.push_back({ 624, 144, 32, 56 });
-	samurai.speed = 0.03f;
+	hotTubBorder.frames.push_back({ 8, 447, 283, 8 });
+	hotTubBorder.frames.push_back({ 295, 447, 283, 8 });
+	hotTubBorder.frames.push_back({ 586, 447, 283, 8 });
+	hotTubBorder.speed = 0.08f;
 }
 
 ModuleSceneHonda::~ModuleSceneHonda() {}
 
-bool ModuleSceneHonda::Init() {
+bool ModuleSceneHonda::Start() {
 	LOG("Loading honda scene");
 
 	graphics = App->textures->Load("honda_stage.png");
@@ -59,17 +63,18 @@ bool ModuleSceneHonda::CleanUp() {
 }
 
 update_status ModuleSceneHonda::Update() {
-	App->renderer->Blit(graphics, 0, 0, &background, 2.0f);
-	App->renderer->Blit(graphics, 560, 8, &(mountain.GetCurrentFrame()), 2.0f);
-	App->renderer->Blit(graphics, 560, 8, &(samurai.GetCurrentFrame()), 2.0f);
-	
-	App->renderer->Blit(graphics, 0, 0, &hotTub, 2.0f);
-	App->renderer->Blit(graphics, 0, 170, &ground, 2.0f);
+
+	App->renderer->Blit(graphics, -100, 10, &roof, 2.0f);
+	App->renderer->Blit(graphics, -100, 160, &ground, 2.0f);
+	App->renderer->Blit(graphics, -10, 50, &background, 2.0f);
+	App->renderer->Blit(graphics, 180, 54, &(mountain.GetCurrentFrame()), 2.0f);
+	App->renderer->Blit(graphics, 180, 140, &hotTub, 2.0f);
+	App->renderer->Blit(graphics, 180, 155, &(hotTubBorder.GetCurrentFrame()), 2.0f);
 
 	App->player->Update();
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE)) {
-		App->fade->FadeToBlack(App->scene_ken, App->scene_honda);
+		App->fade->FadeToBlack(App->scene_ken, App->scene_honda, 3.0f);
 	}
 	return UPDATE_CONTINUE;
 }

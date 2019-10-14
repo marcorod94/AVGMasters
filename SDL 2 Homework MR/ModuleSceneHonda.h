@@ -11,7 +11,7 @@ class ModuleSceneHonda : public Module {
 public:
 	ModuleSceneHonda(bool start_enabled = true);
 	~ModuleSceneHonda();
-	bool Init();
+	bool Start();
 	update_status Update();
 	bool CleanUp();
 
@@ -19,8 +19,9 @@ public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Rect ground;
 	SDL_Rect background;
+	SDL_Rect roof;
 	SDL_Rect hotTub;
 	Animation mountain;
-	Animation samurai;
+	Animation hotTubBorder;
 };
 #endif
