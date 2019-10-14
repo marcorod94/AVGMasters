@@ -25,8 +25,6 @@ public:
 	Animation ship;
 	Animation flag;
 	Animation girl;
-private:
-	int yPosShip = 0;
 };
 
 #endif // __MODULESCENEKEN_H__
