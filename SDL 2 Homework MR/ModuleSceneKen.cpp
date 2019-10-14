@@ -21,12 +21,17 @@ ModuleSceneKen::ModuleSceneKen(bool start_enabled) : Module(start_enabled)
 
 	// TODO 2 : setup the foreground (red ship) with
 	// coordinates x,y,w,h from ken_stage.png
-
+	
 	// Background / sky
 	background.x = 72;
 	background.y = 208;
 	background.w = 768;
 	background.h = 176;
+
+	ship.frames.push_back({8, 22, 520, 179});
+	ship.frames.push_back({ 8, 23, 520, 179 });
+	ship.frames.push_back({ 8, 23, 520, 179 });
+	ship.speed = 0.03f;
 
 	// flag animation
 	flag.frames.push_back({848, 208, 40, 40});
@@ -35,7 +40,10 @@ ModuleSceneKen::ModuleSceneKen(bool start_enabled) : Module(start_enabled)
 	flag.speed = 0.08f;
 
 	// TODO 4: Setup Girl Animation from coordinates from ken_stage.png
-
+	girl.frames.push_back({ 624, 15, 32, 56 });
+	girl.frames.push_back({ 624, 80, 32, 56 });
+	girl.frames.push_back({ 624, 144, 32, 56 });
+	girl.speed = 0.03f;
 }
 
 ModuleSceneKen::~ModuleSceneKen()
@@ -49,7 +57,9 @@ bool ModuleSceneKen::Start()
 	graphics = App->textures->Load("ken_stage.png");
 
 	// TODO 7: Enable the player module
+	App->player->Start();
 	// TODO 0: trigger background music
+	App->audio->PlayMusic("ken.ogg");
 	
 	return true;
 }
@@ -69,18 +79,19 @@ bool ModuleSceneKen::CleanUp()
 update_status ModuleSceneKen::Update()
 {
 	// TODO 5: make sure the ship goes up and down
-
+	
 	// Draw everything --------------------------------------
 	// TODO 1: Tweak the movement speed of the sea&sky + flag to your taste
-	App->renderer->Blit(graphics, 0, 0, &background, 1.0f); // sea and sky
-	App->renderer->Blit(graphics, 560, 8, &(flag.GetCurrentFrame()), 1.0f); // flag animation
-
+	App->renderer->Blit(graphics, 0, 0, &background, 2.0f); // sea and sky
+	App->renderer->Blit(graphics, 560, 8, &(flag.GetCurrentFrame()), 2.0f); // flag animation
+	
 	// TODO 3: Draw the ship. Be sure to tweak the speed.
+	App->renderer->Blit(graphics, 0, 0, &(ship.GetCurrentFrame()), 2.0f);
 
 	// TODO 6: Draw the girl. Make sure it follows the ship movement!
-	
-	App->renderer->Blit(graphics, 0, 170, &ground);
-
+	App->renderer->Blit(graphics, 192, 105, &(girl.GetCurrentFrame()), 2.0f);
+	App->renderer->Blit(graphics, 0, 170, &ground, 2.0f);
+	App->player->Update();
 	// TODO 10: Build an entire new scene "honda", you can find its
 	// and music in the Game/ folder
 

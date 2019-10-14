@@ -22,7 +22,11 @@ public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Rect ground;
 	SDL_Rect background;
+	Animation ship;
 	Animation flag;
+	Animation girl;
+private:
+	int yPosShip = 0;
 };
 
 #endif // __MODULESCENEKEN_H__
