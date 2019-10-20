@@ -1,0 +1,9 @@
+[submodule "Homework-Vec-Str"]
+	path = Homework-Vec-Str
+	url = https://github.com/marcorod94/Homework-Vec-Str.git
+[submodule "SDL-01-Classwork-MR"]
+	path = SDL-01-Classwork-MR
+	url = https://github.com/marcorod94/SDL-01-Classwork-MR.git
+[submodule "SDL-02-Homework-MR"]
+	path = SDL-02-Homework-MR
+	url = https://github.com/marcorod94/SDL-02-Homework-MR.git
