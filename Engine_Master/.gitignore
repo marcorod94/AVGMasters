@@ -5,9 +5,7 @@
 
 # Libraries
 
-!SDL*/
-!Game/
-!glew-2.1.0/
+!Libraries/
 
 
 # User-specific files
