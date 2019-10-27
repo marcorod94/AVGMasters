@@ -7,3 +7,6 @@
 [submodule "SDL-02-Homework-MR"]
 	path = SDL-02-Homework-MR
 	url = https://github.com/marcorod94/SDL-02-Homework-MR.git
+[submodule "Engine-Demo-MR"]
+	path = Engine-Demo-MR
+	url = https://github.com/marcorod94/Engine-Demo-MR.git
